@@ -2,6 +2,15 @@
 //
 // `npm run dev` and `npm start` load .env with Node's --env-file flag (see
 // package.json). The tests set their own value in vitest.config.ts.
+// The defaults are your laptop's values; .env can override them.
+export const getPort = (): number => Number(process.env.PORT ?? 6790);
+
+export const getMongoUri = (): string =>
+  process.env.MONGO_URI ?? 'mongodb://127.0.0.1:27017';
+
+export const getDbName = (): string => process.env.DB_NAME ?? 'week9';
+
+
 
 export const getJwtSecret = (): string => {
   const secret = process.env.JWT_SECRET;
